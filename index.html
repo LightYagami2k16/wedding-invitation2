@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Isabella & Ethan — Wedding Invitation</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Marcellus&family=Lato:wght@300;400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ══ FLOATING MUSIC PLAYER ══ -->
+<div id="player-pill">
+  <button id="player-btn" onclick="toggleMusic()" aria-label="Toggle music">
+    <svg id="ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="ico-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <div class="player-info">
+    <span id="now-playing">♩ Loading…</span>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+  </div>
+</div>
+<audio id="bgm" preload="auto"></audio>
+
+<!-- ══ HERO / COVER ══ -->
+<section id="cover">
+  <div class="cover-veil"></div>
+  <!-- Botanical SVG overlays -->
+  <div class="botanical-tl">
+    <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20,280 Q60,200 40,120 Q80,160 100,80 Q90,140 130,100 Q110,170 150,140 Q120,200 160,180 Q130,230 100,220 Q120,250 80,260 Q90,270 20,280Z" fill="rgba(139,115,85,0.18)"/>
+      <path d="M10,260 Q50,180 30,90" stroke="rgba(139,115,85,0.25)" stroke-width="1.5" fill="none"/>
+      <circle cx="100" cy="80" r="6" fill="rgba(180,140,100,0.3)"/>
+      <circle cx="150" cy="140" r="4" fill="rgba(180,140,100,0.25)"/>
+      <circle cx="80" cy="195" r="5" fill="rgba(180,140,100,0.2)"/>
+    </svg>
+  </div>
+  <div class="botanical-br">
+    <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M180,20 Q140,100 160,180 Q120,140 100,220 Q110,160 70,200 Q90,130 50,160 Q80,100 40,120 Q70,70 100,80 Q80,50 120,40 Q110,30 180,20Z" fill="rgba(139,115,85,0.18)"/>
+      <path d="M190,40 Q150,120 170,210" stroke="rgba(139,115,85,0.25)" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="cover-content">
+    <p class="cover-pre">— Together with their families —</p>
+    <div class="wax-seal" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="#8B5E3C" opacity="0.9"/>
+        <circle cx="50" cy="50" r="40" stroke="#C4956A" stroke-width="1" fill="none"/>
+        <path d="M50 25 L53 42 L70 42 L57 52 L62 68 L50 58 L38 68 L43 52 L30 42 L47 42Z" fill="#C4956A" opacity="0.7"/>
+        <text x="50" y="78" text-anchor="middle" font-family="serif" font-size="7" fill="#F0E6D3" letter-spacing="2">I & E</text>
+      </svg>
+    </div>
+    <h1 class="cover-names">
+      <span class="name-bride">Isabella</span>
+      <span class="cover-ampersand">&amp;</span>
+      <span class="name-groom">Ethan</span>
+    </h1>
+    <p class="cover-invite">joyfully request the honour of your presence<br/>at the celebration of their marriage</p>
+    <div class="cover-rule"><span></span><span class="rule-diamond">◆</span><span></span></div>
+    <p class="cover-date-display">
+      <span class="cover-day">Saturday</span><br/>
+      <span class="cover-datenum">the Twenty-Second of March</span><br/>
+      <span class="cover-year">Two Thousand and Twenty-Six</span>
+    </p>
+    <p class="cover-time">at half past four in the afternoon</p>
+    <a href="#details" class="scroll-cue" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ══ COUNTDOWN ══ -->
+<section id="countdown-wrap">
+  <p class="section-tag">Counting with anticipation</p>
+  <h2 class="section-heading">Until We Become One</h2>
+  <div id="cd-grid">
+    <div class="cd-unit"><span id="cd-d">00</span><label>Days</label></div>
+    <div class="cd-dot">·</div>
+    <div class="cd-unit"><span id="cd-h">00</span><label>Hours</label></div>
+    <div class="cd-dot">·</div>
+    <div class="cd-unit"><span id="cd-m">00</span><label>Minutes</label></div>
+    <div class="cd-dot">·</div>
+    <div class="cd-unit"><span id="cd-s">00</span><label>Seconds</label></div>
+  </div>
+</section>
+
+<!-- ══ EVENT DETAILS ══ -->
+<section id="details">
+  <p class="section-tag">The Celebration</p>
+  <h2 class="section-heading">When &amp; Where</h2>
+
+  <div class="details-row">
+    <!-- Ceremony -->
+    <div class="detail-card reveal">
+      <div class="detail-icon-wrap">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L30 20 M22 12 L30 5 L38 12" stroke="#8B7355" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="10" y="20" width="40" height="32" rx="1" stroke="#8B7355" stroke-width="1.2" fill="none"/>
+          <path d="M20 52 L20 36 Q20 30 30 30 Q40 30 40 36 L40 52" stroke="#8B7355" stroke-width="1.2" fill="none"/>
+          <rect x="25" y="38" width="10" height="8" rx="1" stroke="#8B7355" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <h3>Holy Ceremony</h3>
+      <p class="detail-venue">Chapel of Our Lady of Grace</p>
+      <p class="detail-addr">78 Rosewood Lane<br/>Savannah, Georgia 31401</p>
+      <p class="detail-time">4:30 in the afternoon</p>
+    </div>
+
+    <!-- Motif -->
+    <div class="detail-card motif-center reveal">
+      <p class="section-tag" style="margin-bottom:.6rem">Wedding Motif</p>
+      <p class="motif-theme">Garden Romance</p>
+      <div class="motif-palette">
+        <div class="motif-swatch-wrap">
+          <span class="motif-swatch" style="background:#A8B5A0"></span>
+          <span class="motif-label">Sage</span>
+        </div>
+        <div class="motif-swatch-wrap">
+          <span class="motif-swatch" style="background:#D4B896"></span>
+          <span class="motif-label">Champagne</span>
+        </div>
+        <div class="motif-swatch-wrap">
+          <span class="motif-swatch" style="background:#7D3C3C"></span>
+          <span class="motif-label">Burgundy</span>
+        </div>
+        <div class="motif-swatch-wrap">
+          <span class="motif-swatch" style="background:#F0EAE0"></span>
+          <span class="motif-label">Ivory</span>
+        </div>
+      </div>
+      <p class="motif-dress">Dress Code: Garden Formal</p>
+      <p class="motif-note">"Soft florals and earthy elegance"</p>
+    </div>
+
+    <!-- Reception -->
+    <div class="detail-card reveal">
+      <div class="detail-icon-wrap">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="42" rx="22" ry="10" stroke="#8B7355" stroke-width="1.2" fill="none"/>
+          <path d="M15 42 L15 30 Q15 18 30 18 Q45 18 45 30 L45 42" stroke="#8B7355" stroke-width="1.2" fill="none"/>
+          <path d="M22 18 Q22 10 30 10 Q38 10 38 18" stroke="#8B7355" stroke-width="1.2" fill="none"/>
+          <line x1="30" y1="10" x2="30" y2="5" stroke="#8B7355" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>Wedding Reception</h3>
+      <p class="detail-venue">The Magnolia Estate</p>
+      <p class="detail-addr">210 Blossomfield Drive<br/>Savannah, Georgia 31405</p>
+      <p class="detail-time">6:00 in the evening</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ENTOURAGE ══ -->
+<section id="entourage">
+  <div class="entourage-bg-leaf" aria-hidden="true">
+    <svg viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <path d="M50,550 Q150,350 80,150 Q200,250 250,100 Q220,300 300,200 Q260,380 350,320 Q280,460 320,430" stroke="rgba(168,181,160,0.12)" stroke-width="2" fill="none"/>
+      <path d="M80,150 Q100,130 120,110 Q110,140 130,120 Q115,155 140,135" stroke="rgba(168,181,160,0.1)" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+
+  <p class="section-tag">Those Who Walk With Us</p>
+  <h2 class="section-heading">The Wedding Party</h2>
+
+  <!-- Principal Sponsors -->
+  <div class="entourage-block reveal">
+    <h3 class="e-role-title">Principal Sponsors</h3>
+    <div class="sponsor-grid">
+      <div class="sponsor-entry"><p class="sponsor-name">Mr. &amp; Mrs. Theodore Whitmore</p></div>
+      <div class="sponsor-entry"><p class="sponsor-name">Mr. &amp; Mrs. Franklin Beaumont</p></div>
+      <div class="sponsor-entry"><p class="sponsor-name">Mr. &amp; Mrs. Gerald Ashford</p></div>
+      <div class="sponsor-entry"><p class="sponsor-name">Mr. &amp; Mrs. Lawrence Pemberton</p></div>
+    </div>
+  </div>
+
+  <!-- Secondary Sponsors -->
+  <div class="entourage-block reveal">
+    <h3 class="e-role-title">Secondary Sponsors</h3>
+    <div class="secondary-grid">
+      <div class="sec-sponsor">
+        <p class="sec-role">Veil</p>
+        <p class="sec-names">Ms. Vivienne Cole &amp; Mr. Adrian West</p>
+      </div>
+      <div class="sec-sponsor">
+        <p class="sec-role">Cord</p>
+        <p class="sec-names">Ms. Cecilia Morrow &amp; Mr. Julian Hart</p>
+      </div>
+      <div class="sec-sponsor">
+        <p class="sec-role">Candles</p>
+        <p class="sec-names">Ms. Natasha Bloom &amp; Mr. Silas Grant</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bridal Party -->
+  <div class="bridal-party-wrap reveal">
+    <div class="party-side">
+      <div class="party-block">
+        <h3 class="e-role-title">Best Man</h3>
+        <p class="party-name">Mr. Oliver Harrington</p>
+      </div>
+      <div class="party-block">
+        <h3 class="e-role-title">Groomsmen</h3>
+        <p class="party-name">Mr. Sebastian Clarke</p>
+        <p class="party-name">Mr. Matteo Rourke</p>
+        <p class="party-name">Mr. Dominic Fitch</p>
+      </div>
+      <div class="party-block">
+        <h3 class="e-role-title">Ring Bearer</h3>
+        <p class="party-name">Master Noah Whitmore</p>
+      </div>
+    </div>
+
+    <div class="party-center-ornament" aria-hidden="true">
+      <svg viewBox="0 0 80 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="0" x2="40" y2="200" stroke="rgba(168,181,160,0.4)" stroke-width="1"/>
+        <circle cx="40" cy="30" r="3" fill="rgba(168,181,160,0.5)"/>
+        <circle cx="40" cy="100" r="5" fill="rgba(168,181,160,0.4)"/>
+        <circle cx="40" cy="170" r="3" fill="rgba(168,181,160,0.5)"/>
+        <path d="M30,60 Q40,50 50,60 Q40,70 30,60Z" fill="rgba(168,181,160,0.3)"/>
+        <path d="M30,140 Q40,130 50,140 Q40,150 30,140Z" fill="rgba(168,181,160,0.3)"/>
+      </svg>
+    </div>
+
+    <div class="party-side">
+      <div class="party-block">
+        <h3 class="e-role-title">Maid of Honor</h3>
+        <p class="party-name">Ms. Charlotte Voss</p>
+      </div>
+      <div class="party-block">
+        <h3 class="e-role-title">Bridesmaids</h3>
+        <p class="party-name">Ms. Annalise Reid</p>
+        <p class="party-name">Ms. Josephine Tailor</p>
+        <p class="party-name">Ms. Rosalie Dumont</p>
+      </div>
+      <div class="party-block">
+        <h3 class="e-role-title">Flower Girl</h3>
+        <p class="party-name">Miss Eloise Beaumont</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAP ══ -->
+<section id="venue-map">
+  <p class="section-tag">Find Your Way</p>
+  <h2 class="section-heading">Venue Locations</h2>
+
+  <div class="map-switcher">
+    <button class="map-sw-btn active" onclick="switchMap('ceremony', this)">Ceremony</button>
+    <span class="map-sw-sep">·</span>
+    <button class="map-sw-btn" onclick="switchMap('reception', this)">Reception</button>
+  </div>
+
+  <div class="map-shell reveal">
+    <iframe id="map-ceremony" class="gmap show"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.1!2d-81.0998!3d32.0809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fb9f5e6a9be437%3A0x3ee05e87c83daeae!2sSavannah%2C%20GA!5e0!3m2!1sen!2sus!4v1700000000000"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ceremony Map">
+    </iframe>
+    <iframe id="map-reception" class="gmap"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.5!2d-81.1200!3d32.0750!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fb9f5e6a9be437%3A0x3ee05e87c83daeae!2sSavannah%2C%20GA!5e0!3m2!1sen!2sus!4v1700000001000"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Reception Map">
+    </iframe>
+  </div>
+
+  <div class="map-dir-row">
+    <a id="dir-ceremony" href="https://maps.google.com/?q=Savannah+GA" target="_blank" class="dir-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Directions to Ceremony
+    </a>
+    <a id="dir-reception" href="https://maps.google.com/?q=Savannah+GA" target="_blank" class="dir-btn" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Directions to Reception
+    </a>
+  </div>
+</section>
+
+<!-- ══ RSVP ══ -->
+<section id="rsvp">
+  <div class="rsvp-bg-overlay"></div>
+  <div class="rsvp-card reveal">
+    <p class="section-tag light">Kindly reply by March 1, 2026</p>
+    <h2 class="section-heading light">Will You Join Us?</h2>
+    <p class="rsvp-sub">Your presence is our greatest gift.</p>
+
+    <form id="rsvp-form" onsubmit="submitRSVP(event)" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Isabella" required autocomplete="given-name"/>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Voss" required autocomplete="family-name"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="attendance">Your Attendance</label>
+        <div class="select-wrap">
+          <select id="attendance" name="attendance" required>
+            <option value="" disabled selected>— Please select —</option>
+            <option value="Joyfully Accepts">✓ Joyfully Accepts</option>
+            <option value="Regretfully Declines">✗ Regretfully Declines</option>
+          </select>
+          <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="form-group" id="meal-group" style="display:none">
+        <label for="dietary">Dietary Notes <span class="optional">(optional)</span></label>
+        <input type="text" id="dietary" name="dietary" placeholder="Vegetarian, allergy, etc."/>
+      </div>
+
+      <button type="submit" class="rsvp-btn" id="rsvp-submit">
+        <span id="rsvp-btn-text">Send My Reply</span>
+        <svg id="rsvp-spinner" class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="10" stroke-dasharray="31.4" stroke-dashoffset="10"/></svg>
+      </button>
+
+      <p id="rsvp-msg" class="rsvp-feedback" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ══ PHOTO UPLOAD ══ -->
+<section id="photo-upload">
+  <p class="section-tag">Share the Memories</p>
+  <h2 class="section-heading">Your Photos</h2>
+  <p class="upload-caption">
+    Captured a beautiful moment? We'd love to see it.<br/>
+    Upload your photos to our shared wedding album — every snapshot is a treasure.
+  </p>
+  <a href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE" target="_blank" class="upload-btn reveal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    Upload Your Photos to Our Album
+  </a>
+  <p class="upload-note">Opens Google Drive · No sign-in required</p>
+</section>
+
+<!-- ══ CLOSING ══ -->
+<footer id="closing">
+  <div class="closing-leaf" aria-hidden="true">
+    <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <path d="M0,100 Q75,50 150,100 Q225,150 300,100" stroke="rgba(168,181,160,0.15)" stroke-width="60" fill="none"/>
+    </svg>
+  </div>
+  <div class="closing-content">
+    <div class="closing-monogram">I &amp; E</div>
+    <p class="closing-quote">"I have found the one whom my soul loves."<br/><em>— Song of Solomon 3:4</em></p>
+    <div class="closing-rule"><span></span><span class="rule-diamond">◆</span><span></span></div>
+    <p class="closing-date">22 · 03 · 2026 · Savannah, Georgia</p>
+    <p class="closing-note">We are so grateful to share this day with you.</p>
+  </div>
+</footer>
+
+<!-- ══ CONFETTI CANVAS ══ -->
+<canvas id="confetti-canvas"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
