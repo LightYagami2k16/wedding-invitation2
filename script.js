@@ -18,8 +18,9 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 // Royalty-free placeholder tracks. Replace with real files or hosted MP3s.
 // Upload .mp3 files into this repo and reference them as './track1.mp3' etc.
 const PLAYLIST = [
-  { title: 'A Thousand Years — Piano',     url: 'https://www.image2url.com/r2/default/audio/1782460394596-9d103a9b-fd81-4ecc-a7ab-25f1905c8fd0.mp3' },
-  { title: 'Palagi - Violin Cover',  url: 'https://www.image2url.com/r2/default/audio/1782450469981-f0c6de59-b6ae-4b70-ac07-c9d3cf9e75c1.mp3' },
+  { title: 'A Thousand Years',  url: 'https://www.image2url.com/r2/default/audio/1782450469981-f0c6de59-b6ae-4b70-ac07-c9d3cf9e75c1.mp3' },
+  { title: 'Palagi',           url: 'https://www.image2url.com/r2/default/audio/1782460394596-9d103a9b-fd81-4ecc-a7ab-25f1905c8fd0.mp3'          },
+  { title: 'Beautiful in White x Canon in D', url: 'https://www.image2url.com/r2/default/audio/1782720516146-9a8abcee-766b-48e4-88e1-d8a37c5d09d3.mp3' },
 ];
 
 /* ══════════════════════════════════════════
